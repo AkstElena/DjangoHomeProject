@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'hwapp',
+    'storeapp',
 ]
 
 MIDDLEWARE = [
@@ -126,38 +127,38 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGGING = {
-    'version': 1,  # стандартная строка
-    'disable_existing_loggers': False,  # отключить существующий логер, мы не отключаем
-    'formatters': {
-        'simple': {  # обычное форматирование
-            'format': '%(levelname)s %(message)s'
-        },
-        'verbose': {  # необычное форматирование
-            'format': '{levelname} {asctime} {module} {process} {thread} {message}',  # красивый вывод с датой, уровнем и т.п.
-            'style': '{',
-        },
-    },
-    'handlers': {  # обработчики
-        'console': {
-            'class': 'logging.StreamHandler',  # вывод в консоль информации
-            'formatter': 'verbose',
-        },
-        'file': {
-            'class': 'logging.FileHandler',  # вывод в файл информации
-            'filename': './log/django.log',  # каталоги надо создать для работы,
-            'formatter': 'verbose',
-        },
-    },
-    'loggers': {
-        'django': {  # логировать все приложения
-            'handlers': ['console', 'file'],  # используются обработчики
-            'level': 'INFO',  # уровень логирования
-        },
-        'hwapp': {  # логирование для конкретного приложения
-            'handlers': ['console', 'file'],
-            'level': 'DEBUG',  # уровень логирования отладки
-            'propagate': True,  # более высокостоящие логеры тоже надо показывать
-        },
-    },
-}
+# LOGGING = {
+#     'version': 1,  # стандартная строка
+#     'disable_existing_loggers': False,  # отключить существующий логер, мы не отключаем
+#     'formatters': {
+#         'simple': {  # обычное форматирование
+#             'format': '%(levelname)s %(message)s'
+#         },
+#         'verbose': {  # необычное форматирование
+#             'format': '{levelname} {asctime} {module} {process} {thread} {message}',  # красивый вывод с датой, уровнем и т.п.
+#             'style': '{',
+#         },
+#     },
+#     'handlers': {  # обработчики
+#         'console': {
+#             'class': 'logging.StreamHandler',  # вывод в консоль информации
+#             'formatter': 'verbose',
+#         },
+#         'file': {
+#             'class': 'logging.FileHandler',  # вывод в файл информации
+#             'filename': './log/django.log',  # каталоги надо создать для работы,
+#             'formatter': 'verbose',
+#         },
+#     },
+#     'loggers': {
+#         'django': {  # логировать все приложения
+#             'handlers': ['console', 'file'],  # используются обработчики
+#             'level': 'INFO',  # уровень логирования
+#         },
+#         'hwapp': {  # логирование для конкретного приложения
+#             'handlers': ['console', 'file'],
+#             'level': 'DEBUG',  # уровень логирования отладки
+#             'propagate': True,  # более высокостоящие логеры тоже надо показывать
+#         },
+#     },
+# }

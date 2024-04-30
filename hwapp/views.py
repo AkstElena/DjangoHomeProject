@@ -7,9 +7,9 @@
 """
 from django.shortcuts import render
 from django.http import HttpResponse
-import logging
-
-logger = logging.getLogger(__name__)
+# import logging
+#
+# logger = logging.getLogger(__name__)
 
 
 def main(request):
@@ -28,7 +28,7 @@ def main(request):
         <div class="container-fluid">
             <ul class="nav nav-pills justify-content-end align-items-end">
                 <li class="nav-item"><a href="" class="nav-link">Главная</a></li>
-                <li class="nav-item"><a href="/about/" class="nav-link">Обо мне</a></li>
+                <li class="nav-item"><a href="/hw/about/" class="nav-link">Обо мне</a></li>
             </ul>
         
 
@@ -134,7 +134,7 @@ def about(request):
             </title>
             <div class="container-fluid">
             <ul class="nav nav-pills justify-content-end align-items-end">
-                <li class="nav-item"><a href="/main/" class="nav-link">Главная</a></li>
+                <li class="nav-item"><a href="/hw/main" class="nav-link">Главная</a></li>
                 <li class="nav-item"><a href="" class="nav-link">Обо мне</a></li>
             </ul>
             <div class="top">
@@ -175,5 +175,5 @@ def about(request):
           </body>
         </html>
     """
-    logger.info('Data provided')
+    # logger.info('Data provided')
     return HttpResponse(html)
