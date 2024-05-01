@@ -9,7 +9,7 @@ class Client(models.Model):
     date_registration = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'Client: {self.name}, email: {self.email}, phone: {self.phone}'
+        return f'{self.name} ({self.email}, phone: {self.phone})'
 
 
 class Product(models.Model):

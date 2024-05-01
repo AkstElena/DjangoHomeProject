@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ name }} {% endblock %}
+
+{% block content %}
+
+  <h2>Список товаров</h2>
+  <table>
+    <tr><td> <b>№ п/п </b></td><td> <b> Наименование продукта </b></td><td> <b> Описание </b></td>
+        <td> <b> Цена </b></td><td> <b> Количество </b></td></tr>
+  {% for key, value in products.items %}
+    <tr><td>{{ key }}</td><td>{{ value.name }}</td><td>{{ value.description }}</td>
+      <td>{{ value.price }}</td><td>{{ value.amount }}</td></tr>
+  {% endfor %}
+  </table>
+{% endblock %}

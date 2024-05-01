@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ name }} {% endblock %}
+
+{% block content %}
+  <h2> {{ name }}</h2>
+
+<ul>
+  <li><b>Наименование продукта: </b>{{ product.name }}</li>
+  <li><b> Описание: </b>{{ product.description }}</li>
+  <li><b> Цена: </b>{{ product.price }}</li>
+  <li><b> Количество: </b>{{ product.amount }}</li>
+  <li><b> Дата добавления товара: </b>{{ product.date_added }}</li>
+</ul>
+
+
+{% endblock %}

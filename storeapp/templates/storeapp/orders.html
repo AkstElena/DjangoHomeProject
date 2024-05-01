@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ name }} {% endblock %}
+
+{% block content %}
+<h2>Заказы</h2>
+  <ol>
+    {% for order in orders %}
+    <li><div><b> Клиент: </b>{{ order.customer }}</div>
+        <table>
+        <tr><td> <i> Наименование продукта </i><td> <i> Цена </i></td><td> <i> Количество </i></td></tr>
+      {% for item in order.products.all %}
+        <tr><td>{{ item.name }}</td><td>{{ item.price }}</td><td>{{ item.amount }}</td></tr>
+      {% endfor %}
+      </table>
+        <div><b> Общая сумма заказа: </b>{{ order.total_price }}</div>
+        <div><b> Дата и время заказа: </b>{{ order.date_ordered }}</div>
+    </li>
+    {% endfor %}
+  </ol>
+{% endblock %}
