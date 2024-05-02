@@ -3,14 +3,21 @@
 {% block title %} {{ name }} {% endblock %}
 
 {% block content %}
+  <table>
+    <tr>
+        <td> <b><a href="../../">Главная</a> </b></td>
+        <td> <b><a href="">Клиенты</a> </b></td>
+        <td> <b><a href="../products/">Товары</a> </b></td>
+        <td> <b><a href="../orders/">Заказы</a></b></td>
+  </table>
   <h2>Список клиентов</h2>
-
+<p>При переходе по ссылке по ID клиента отобразится карточка клиента</p>
   <table>
     <tr><td> <b>ID клиента </b></td><td> <b>Имя </b></td><td> <b>Электронный адрес </b></td>
-      <td> <b>Телефон </b></td><td> <b>Почтовый адрес </b></td></tr>
+      <td> <b>Телефон </b></td><td> <b>Справочно </b></td></tr>
   {% for client in clients %}
-    <tr><td>{{ client.id }}  </td><td>{{ client.name }}</td><td>{{ client.email }}</td>
-      <td>{{ client.phone }}</td><td>{{ client.address }}</td></tr>
+    <tr><td><a href="{% url 'get_client_on_id' client.id %}">{{ client.id }}</a></td><td>{{ client.name }}</td><td>{{ client.email }}</td>
+      <td>{{ client.phone }}</td><td><a href="{% url 'get_orders_on_client_id' client.id %}">заказы клиента {{ client.id }} </a></td></tr>
   {% endfor %}
   </table>
 {% endblock %}

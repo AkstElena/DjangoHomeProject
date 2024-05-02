@@ -3,22 +3,24 @@
 {% block title %} {{ name }} {% endblock %}
 
 {% block content %}
-
   <table>
     <tr>
-        <td> <b><a href="../../">Главная</a> </b></td>
-        <td> <b><a href="../clients/">Клиенты</a> </b></td>
-        <td> <b><a href="../products">Товары</a> </b></td>
-        <td> <b><a href="">Заказы</a></b></td>
+        <td> <b><a href="../../clients/">Назад</a> </b></td>
+
   </table>
-
 <h2>Заказы</h2>
+<p>Отражены все заказы по клиенту за весь период работы магазина</p>
+<p>Уникальные товары в заказах клиента:</p>
+<ul>
+  <li><a href="{% url 'get_products_in_orders_on_client_id_sort' client_id '7' %}"> За последние 7 дней</a></li>
+  <li><a href="{% url 'get_products_in_orders_on_client_id_sort' client_id '30' %}"> За последние 30 дней</a></li>
+  <li><a href="{% url 'get_products_in_orders_on_client_id_sort' client_id '365' %}"> За последние 365 дней</a></li>
 
-<p>Отражены все заказы по всем клиентам за весь период работы магазина</p>
-<p>Для отображения заказов конкретного клиента необходимо перейти на вкладку <a href="../clients/">клиенты</a> и выбрать по нему заказы</p>
+</ul>
   <ol>
     {% for order in orders %}
     <li><div><b> Клиент: </b>{{ order.customer }}</div>
+
         <table>
         <tr><td> <i> Наименование продукта </i><td> <i> Цена </i></td><td> <i> Количество </i></td></tr>
       {% for item in order.products.all %}

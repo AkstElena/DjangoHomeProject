@@ -146,10 +146,10 @@ def get_orders(request):
 def get_orders_on_client_id(request, client_id):
     orders = Order.objects.filter(customer=client_id).all()
     if orders.exists():
-        context = {'orders': orders, 'name': f'Заказы по клиенту с id {client_id}'}
-        return render(request, 'storeapp/orders.html', context)
+        context = {'orders': orders, 'name': f'Заказы по клиенту с id {client_id}', 'client_id': client_id}
+        return render(request, 'storeapp/orders_client.html', context)
     return render(request, 'storeapp/404.html',
-                  {'text': f'Клиента с ID {client_id} нет в базе данных',
+                  {'text': f'У Клиента с ID {client_id} пока нет заказов',
                    'name': 'Данные не обнаружены'})
 
 

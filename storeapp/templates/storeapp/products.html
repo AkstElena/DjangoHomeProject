@@ -3,14 +3,20 @@
 {% block title %} {{ name }} {% endblock %}
 
 {% block content %}
-
-  <h2>Список товаров</h2>
   <table>
-    <tr><td> <b>№ п/п </b></td><td> <b> Наименование продукта </b></td><td> <b> Описание </b></td>
-        <td> <b> Цена </b></td><td> <b> Количество </b></td></tr>
+    <tr>
+        <td> <b><a href="../../">Главная</a> </b></td>
+        <td> <b><a href="../clients/">Клиенты</a> </b></td>
+        <td> <b><a href="">Товары</a> </b></td>
+        <td> <b><a href="../orders/">Заказы</a></b></td>
+  </table>
+  <h2>Список товаров</h2>
+<p>При переходе по ссылке по наименованию продукта отобразится карточка товара</p>
+
+  <table>
+    <tr><td> <b>№ п/п </b></td><td> <b> Наименование продукта </b></td><td> <b> Цена </b></td><td> <b> Количество </b></td></tr>
   {% for key, value in products.items %}
-    <tr><td>{{ key }}</td><td>{{ value.name }}</td><td>{{ value.description }}</td>
-      <td>{{ value.price }}</td><td>{{ value.amount }}</td></tr>
+    <tr><td>{{ key }}</td><td><a href="{% url 'get_product_on_name' value.name %}">{{ value.name }}</a></td><td>{{ value.price }}</td><td>{{ value.amount }}</td></tr>
   {% endfor %}
   </table>
 {% endblock %}
