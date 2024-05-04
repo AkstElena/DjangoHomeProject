@@ -12,12 +12,14 @@
 
 
 <ul>
+  <li><b>ID продукта: </b>{{ product.id }}</li>
   <li><b>Наименование продукта: </b>{{ product.name }}</li>
   <li><b> Описание: </b>{{ product.description }}</li>
   <li><b> Цена: </b>{{ product.price }}</li>
   <li><b> Количество: </b>{{ product.amount }}</li>
   <li><b> Дата добавления товара: </b>{{ product.date_added }}</li>
+
 </ul>
 
-
+<button><a href="{% url 'update_product' product.id %}">Отредактировать данные по товару</a></button>
 {% endblock %}

@@ -18,5 +18,5 @@
   <li><b> Дата регистрация клиента: </b>{{ client.date_registration }}</li>
 </ul>
 
-
+<button><a href="{% url 'update_client' client.id %}">Отредактировать данные по клиенту</a></button>
 {% endblock %}

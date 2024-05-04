@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ name }} {% endblock %}
+
+{% block content %}
+
+  <table>
+    <tr>
+        <td> <b><a href="../../">Главная</a> </b></td>
+        <td> <b><a href="../clients/">Клиенты</a> </b></td>
+        <td> <b><a href="../products">Товары</a> </b></td>
+        <td> <b><a href="../orders">Заказы</a></b></td>
+  </table>
+
+<h2>Заказ {{ order.id }}</h2>
+
+
+
+    <div><b> Клиент: </b>{{ order.customer }}</div>
+        <table>
+        <tr><td> <i> Наименование продукта </i><td> <i> Цена </i></td><td> <i> Количество </i></td></tr>
+      {% for item in order.products.all %}
+        <tr><td>{{ item.name }}</td><td>{{ item.price }}</td><td>{{ item.amount }}</td></tr>
+      {% endfor %}
+      </table>
+        <div><b> Общая сумма заказа: </b>{{ order.total_price }}</div>
+        <div><b> Дата и время заказа: </b>{{ order.date_ordered }}</div>
+
+
+{% endblock %}

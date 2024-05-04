@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <table>
+    <tr>
+        <td> <b><a href="http://127.0.0.1:8000">Главная</a> </b></td>
+
+  </table>
+
+
+<h3>{{ message }}</h3>
+
+<h2> {{ name }}</h2>
+
+<ul>
+  <li><b>ID продукта: </b>{{ product.id }}</li>
+  <li><b>Наименование продукта: </b>{{ product.name }}</li>
+  <li><b> Описание: </b>{{ product.description }}</li>
+  <li><b> Цена: </b>{{ product.price }}</li>
+  <li><b> Количество: </b>{{ product.amount }}</li>
+  <li><b> Дата добавления товара: </b>{{ product.date_added }}</li>
+</ul>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Отправить">
+</form>
+{% endblock %}

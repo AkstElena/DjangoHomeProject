@@ -16,17 +16,14 @@
 
 <p>Отражены все заказы по всем клиентам за весь период работы магазина</p>
 <p>Для отображения заказов конкретного клиента необходимо перейти на вкладку <a href="../clients/">клиенты</a> и выбрать по нему заказы</p>
+<p>Для просмотра карточки конкретного заказа необходимо перейти по ссылке по ID заказа </p>
+
+<button ><a href="{% url 'add_order' %}">Создать новый заказ</a></button>
   <ol>
     {% for order in orders %}
-    <li><div><b> Клиент: </b>{{ order.customer }}</div>
-        <table>
-        <tr><td> <i> Наименование продукта </i><td> <i> Цена </i></td><td> <i> Количество </i></td></tr>
-      {% for item in order.products.all %}
-        <tr><td>{{ item.name }}</td><td>{{ item.price }}</td><td>{{ item.amount }}</td></tr>
-      {% endfor %}
-      </table>
+    <li><div><a href="{% url 'get_order_on_id' order.pk %}">ID заказа {{ order.pk }}</a></div>
+        <div><b> Клиент: </b>{{ order.customer.name}}, телефон: {{order.customer.phone}}</div>
         <div><b> Общая сумма заказа: </b>{{ order.total_price }}</div>
-        <div><b> Дата и время заказа: </b>{{ order.date_ordered }}</div>
     </li>
     {% endfor %}
   </ol>

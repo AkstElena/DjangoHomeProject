@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <table>
+    <tr>
+        <td> <b><a href="http://127.0.0.1:8000">Главная</a> </b></td>
+
+  </table>
+
+
+<h3>{{ message }}</h3>
+
+<h2> {{ name }}</h2>
+
+<ul>
+  <li><b>Клиент: </b>{{ client.name }}</li>
+  <li><b> Электронный адрес: </b>{{ client.email }}</li>
+  <li><b> Телефон: </b>{{ client.phone }}</li>
+  <li><b> Почтовый адрес: </b>{{ client.address }}</li>
+  <li><b> Дата регистрация клиента: </b>{{ client.date_registration }}</li>
+</ul>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Отправить">
+</form>
+{% endblock %}

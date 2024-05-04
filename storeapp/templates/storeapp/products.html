@@ -11,12 +11,12 @@
         <td> <b><a href="../orders/">Заказы</a></b></td>
   </table>
   <h2>Список товаров</h2>
-<p>При переходе по ссылке по наименованию продукта отобразится карточка товара</p>
-
+<p>При переходе по ссылке по наименованию продукта отобразится карточка товара и появится возможность его отредактировать</p>
+<button><a href="{% url 'add_product' %}">Добавить новый продукт</a></button>
   <table>
     <tr><td> <b>№ п/п </b></td><td> <b> Наименование продукта </b></td><td> <b> Цена </b></td><td> <b> Количество </b></td></tr>
   {% for key, value in products.items %}
-    <tr><td>{{ key }}</td><td><a href="{% url 'get_product_on_name' value.name %}">{{ value.name }}</a></td><td>{{ value.price }}</td><td>{{ value.amount }}</td></tr>
+    <tr><td>{{ key }} {{ value.id}}</td><td><a href="{% url 'get_product_on_id' value.id %}">{{ value.name }}</a></td><td>{{ value.price }}</td><td>{{ value.amount }}</td></tr>
   {% endfor %}
   </table>
 {% endblock %}
