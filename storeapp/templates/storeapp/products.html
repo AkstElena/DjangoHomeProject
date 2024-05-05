@@ -16,7 +16,7 @@
   <table>
     <tr><td> <b>№ п/п </b></td><td> <b> Наименование продукта </b></td><td> <b> Цена </b></td><td> <b> Количество </b></td></tr>
   {% for key, value in products.items %}
-    <tr><td>{{ key }} {{ value.id}}</td><td><a href="{% url 'get_product_on_id' value.id %}">{{ value.name }}</a></td><td>{{ value.price }}</td><td>{{ value.amount }}</td></tr>
+    <tr><td>{{ key }}</td><td><a href="{% url 'get_product_on_id' value.id %}">{{ value.name }}</a></td><td>{{ value.price }}</td><td>{{ value.amount }}</td></tr>
   {% endfor %}
   </table>
 {% endblock %}

@@ -100,6 +100,7 @@ def get_client_on_id(request, client_id):
                   {'text': f'Клиента с ID {client_id} нет в базе данных', 'name': 'Данные не обнаружены'})
 
 
+# обновить клиента по id
 def update_client(request, client_id):
     client = Client.objects.filter(pk=client_id).first()
     if client is not None:
@@ -154,6 +155,7 @@ def get_products(request):
 #                    'name': 'Данные не обнаружены'})
 
 
+# показать продукт по id
 def get_product_on_id(request, product_id):
     product = Product.objects.filter(pk=product_id).first()
     if product is not None:
@@ -171,7 +173,7 @@ def get_orders(request):
     return render(request, 'storeapp/orders.html', context)
 
 
-# показать заказы по клиенту
+# показать заказы по id клиентa
 def get_orders_on_client_id(request, client_id):
     orders = Order.objects.filter(customer=client_id).all()
     if orders.exists():
@@ -182,6 +184,7 @@ def get_orders_on_client_id(request, client_id):
                    'name': 'Данные не обнаружены'})
 
 
+# показать заказы по id заказа
 def get_order_on_id(request, order_id):
     order = Order.objects.filter(pk=order_id).first()
     if order is not None:
@@ -192,6 +195,7 @@ def get_order_on_id(request, order_id):
                    'name': 'Данные не обнаружены'})
 
 
+# показать уникальные товары из заказов по id клиента, отсортированные за определенное время
 def get_products_in_orders_on_client_id_sort(request, client_id, days):
     end_date = timezone.now()
     start_date = end_date - timezone.timedelta(days=days)
@@ -210,6 +214,7 @@ def get_products_in_orders_on_client_id_sort(request, client_id, days):
                    'name': 'Данные не обнаружены'})
 
 
+# создать новый товара
 def add_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
@@ -235,6 +240,7 @@ def add_product(request):
     return render(request, 'storeapp/form_add.html', {'form': form, 'message': message})
 
 
+# создать нового клиента
 def add_client(request):
     if request.method == 'POST':
         form = ClientForm(request.POST)
@@ -255,6 +261,7 @@ def add_client(request):
     return render(request, 'storeapp/form_add.html', {'form': form, 'message': message})
 
 
+# отредактировать данные по товару по id
 def update_product(request, product_id):
     product = Product.objects.filter(pk=product_id).first()
     if product is not None:
@@ -282,6 +289,7 @@ def update_product(request, product_id):
                    'name': 'Данные не обнаружены'})
 
 
+# создать новый товар
 def add_order(request):
     if request.method == 'POST':
         form = OrderForm(request.POST)
@@ -293,8 +301,6 @@ def add_order(request):
             order = Order(customer=customer, total_price=total_price)
             order.save()
             order.products.set([product for product in products])
-            n = order.pk
-            message = 'Заказ сохранен сохранён'
             return redirect('get_order_on_id', order_id=order.pk)
     else:
         form = OrderForm()
