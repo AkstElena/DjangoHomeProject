@@ -15,8 +15,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from django.conf import settings
-from django.contrib.staticfiles.urls import static
 from .views import index,  get_clients, get_products, get_orders, \
     get_client_on_id, get_orders_on_client_id, delete_client_on_id, get_products_in_orders_on_client_id_sort, \
     add_product, add_client, update_product, update_client, get_product_on_id, add_order, get_order_on_id
@@ -41,4 +39,4 @@ urlpatterns = [
     path('orders/<int:client_id>/', get_orders_on_client_id, name='get_orders_on_client_id'),
     path('orders/<int:client_id>/<int:days>', get_products_in_orders_on_client_id_sort,
          name='get_products_in_orders_on_client_id_sort'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]

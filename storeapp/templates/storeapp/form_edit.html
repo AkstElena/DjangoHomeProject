@@ -19,6 +19,9 @@
   <li><b> Цена: </b>{{ product.price }}</li>
   <li><b> Количество: </b>{{ product.amount }}</li>
   <li><b> Дата добавления товара: </b>{{ product.date_added }}</li>
+    {% if product.photo %}
+    <li><b> Фото товара: </b><p><img src="{{ product.photo.url }}" alt='изображение' width="300"></p></li>
+    {% endif %}
 </ul>
 <form action="" method="post">
     {% csrf_token %}

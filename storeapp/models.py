@@ -30,8 +30,10 @@ class Order(models.Model):
     total_price = models.DecimalField(max_digits=8, decimal_places=2)
     date_ordered = models.DateTimeField(auto_now_add=True)
 
+    def display_products(self):
+        return ', '.join([f'{product.name}: {product.amount} шт.' for product in self.products.all()])
+
+    display_products.short_description = 'Продукты'
+
     def __str__(self):
         return f'Customer: {self.customer}, products: {self.products}, total: {self.total_price}'
-
-
-

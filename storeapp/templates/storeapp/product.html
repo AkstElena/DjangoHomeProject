@@ -3,21 +3,24 @@
 {% block title %} {{ name }} {% endblock %}
 
 {% block content %}
-  <table>
+<table>
     <tr>
-        <td> <b><a href="../../products/">Назад</a> </b></td>
+        <td><b><a href="../../products/">Назад</a> </b></td>
 
-  </table>
-  <h2> {{ name }}</h2>
+</table>
+<h2> {{ name }}</h2>
 
 
 <ul>
-  <li><b>ID продукта: </b>{{ product.id }}</li>
-  <li><b>Наименование продукта: </b>{{ product.name }}</li>
-  <li><b> Описание: </b>{{ product.description }}</li>
-  <li><b> Цена: </b>{{ product.price }}</li>
-  <li><b> Количество: </b>{{ product.amount }}</li>
-  <li><b> Дата добавления товара: </b>{{ product.date_added }}</li>
+    <li><b>ID продукта: </b>{{ product.id }}</li>
+    <li><b>Наименование продукта: </b>{{ product.name }}</li>
+    <li><b> Описание: </b>{{ product.description }}</li>
+    <li><b> Цена: </b>{{ product.price }}</li>
+    <li><b> Количество: </b>{{ product.amount }}</li>
+    <li><b> Дата добавления товара: </b>{{ product.date_added }}</li>
+    {% if product.photo %}
+    <li><b> Фото товара: </b><p><img src="{{ product.photo.url }}" alt='изображение' width="300"></p></li>
+    {% endif %}
 
 </ul>
 
