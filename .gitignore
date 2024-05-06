@@ -1,16 +1,22 @@
-# Игнорировать файлы pycache
-__pycache__/
-.idea
-# Игнорировать миграции БД
-*/migrations/
+## Игнорировать файлы pycache
+#__pycache__/
+#.idea
+## Игнорировать миграции БД
+#*/migrations/
+#
+## Игнорировать файлы настроек локального окружения
+#.env
+#venv*
+#
+## Игнорировать файлы логов
+#*.log
+#*.pyc
+#/route/__pycache__/
+#/temruk/__pycache__/
+#/titorovka/__pycache__/
 
-# Игнорировать файлы настроек локального окружения
-.env
-venv*
-
-# Игнорировать файлы логов
+/media/
+/static/
+*.sqlite3
 *.log
 *.pyc
-/route/__pycache__/
-/temruk/__pycache__/
-/titorovka/__pycache__/
