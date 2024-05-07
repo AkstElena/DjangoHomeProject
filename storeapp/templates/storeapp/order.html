@@ -6,10 +6,10 @@
 
   <table>
     <tr>
-        <td> <b><a href="../../">Главная</a> </b></td>
-        <td> <b><a href="../clients/">Клиенты</a> </b></td>
-        <td> <b><a href="../products">Товары</a> </b></td>
-        <td> <b><a href="../orders">Заказы</a></b></td>
+        <td> <b><a href="{% url 'index' %}">Главная</a> </b></td>
+        <td> <b><a href="{% url 'get_clients' %}">Клиенты</a> </b></td>
+        <td> <b><a href="{% url 'get_products' %}">Товары</a> </b></td>
+        <td> <b><a href="{% url 'get_orders' %}">Заказы</a></b></td>
   </table>
 
 <h2>Заказ {{ order.id }}</h2>
